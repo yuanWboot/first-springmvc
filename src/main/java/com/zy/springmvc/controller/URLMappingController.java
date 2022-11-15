@@ -4,6 +4,7 @@ import com.zy.springmvc.entity.User;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
@@ -32,5 +33,20 @@ public class URLMappingController {
         System.out.println(user.getUsername()+":" + user.getPassword());
         System.out.println(createTime);
         return "这是post请求";
+    }
+
+    @GetMapping("/view")  //http://localhost/um/view?userId=1
+    public ModelAndView shouView(Integer userId){
+        ModelAndView nav = new ModelAndView("/view.jsp");
+        User user = new User();
+        if (userId == 1) {
+            user.setUsername("张三");
+        }else if (userId==2){
+            user.setUsername("李四");
+        }else if (userId==3){
+            user.setUsername("王五");
+        }
+        nav.addObject("u",user);
+        return nav;
     }
 }
