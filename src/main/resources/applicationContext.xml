@@ -17,15 +17,26 @@
                 @Controller
                 @Component-->
     <context:component-scan base-package="com.zy.springmvc"></context:component-scan>
-<!--    启用spring MVC注解开发模式-->
-    <mvc:annotation-driven conversion-service="conversionService"/>
-<!--    将图片js css等静态资源排除在外，可提高执行效率-->
+    <!--    启用spring MVC注解开发模式-->
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <!--response.setContextType("text/html;charset=utf-8")                        -->
+                        <value>text/html;charset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!--    将图片js css等静态资源排除在外，可提高执行效率-->
     <mvc:default-servlet-handler/>
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-<property name="converters">
-    <set>
-        <bean class="com.zy.springmvc.converter.MyDateConverter"></bean>
-    </set>
-</property>
+        <property name="converters">
+            <set>
+                <bean class="com.zy.springmvc.converter.MyDateConverter"></bean>
+            </set>
+        </property>
     </bean>
 </beans>

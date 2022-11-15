@@ -31,6 +31,6 @@ public class URLMappingController {
     public String postMapping1(User user,@DateTimeFormat(pattern = "yyyy-MM-dd") Date createTime){
         System.out.println(user.getUsername()+":" + user.getPassword());
         System.out.println(createTime);
-        return "This is a post method";
+        return "这是post请求";
     }
 }
