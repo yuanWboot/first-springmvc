@@ -37,7 +37,11 @@ public class URLMappingController {
 
     @GetMapping("/view")  //http://localhost/um/view?userId=1
     public ModelAndView shouView(Integer userId){
-        ModelAndView nav = new ModelAndView("/view.jsp");
+        // ModelAndView nav = new ModelAndView("/view.jsp");
+        //重定向
+       // ModelAndView nav = new ModelAndView("redirect:/view.jsp");
+        ModelAndView nav = new ModelAndView();
+        nav.setViewName("/view.jsp");
         User user = new User();
         if (userId == 1) {
             user.setUsername("张三");
