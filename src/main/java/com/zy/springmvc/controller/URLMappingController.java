@@ -14,6 +14,7 @@ public class URLMappingController {
     @ResponseBody
     public String getMapping(@RequestParam("manager_name") String managerName,Date createTime){
         //http://localhost/um/g?manager_name=lili&createTime=1996-02-02
+        //http://localhost/um/g?manager_name=张三&createTime=1996-02-02
         System.out.println("managerName:"+managerName);
         System.out.println("createTime:"+createTime);
         return "This is a get method";
